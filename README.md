@@ -1,4 +1,4 @@
-# modified-nginx-ingress-controller
+# modified-nginx-ingress-controller-daemonset
 
 Nginx ingress controller is one of the most popular ingress controllers for AWS EKS.
 
