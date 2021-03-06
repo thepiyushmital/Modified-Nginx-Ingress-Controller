@@ -9,8 +9,9 @@ When deploying the ingress controller on any given system, the pod deployment st
 
 If **EKS node group** has been setup over a **VPC supporting multiple subnets**, then ideally, **each subnet should have 1 pod** of nginx-ingress-controller running on one of the nodes launched in that subnet. To do so, there are 2 methods. 
 
-1.**To of Ingress-controller pods > No of subnets**
+1.**No of Ingress-controller pods > No of subnets**
    This approach requires the addition of anti-affinity in the ingress-controller deployment yaml script. Even after adding that, there is no certainty that each pod will be          launched in a different subnet. This strategy can most probably be used just as a stop-gap arrangement, wherein we can hope that the pods are being deployed in atleast 2          subnets.
+   
 2. **Convert nginx-ingress-controller deployment into a daemonset**
    This strategy would ensure that even in the advent of subnet downtime, the system would be able to process the load with HA. 
    The problem with this strategy lies in the fact that each nginx ingress controller pod requires around 100Mi of memory, which might not be feasible in low memory EC2 instances 
